@@ -1,0 +1,134 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary cameraSettings = {
+            dictionary Front = {
+                double3 position = (5, 0, 0)
+                double radius = 5
+            }
+            dictionary Perspective = {
+                double3 position = (4.6487688646747065, 1.972168203095198, 1.5369785807068228)
+                double3 target = (-4.268211665007667, -1.2356603929644114, 1.31287287863916)
+            }
+            dictionary Right = {
+                double3 position = (0, -5, 0)
+                double radius = 5
+            }
+            dictionary Top = {
+                double3 position = (0, 0, 5)
+                double radius = 5
+            }
+            string boundCamera = "/OmniverseKit_Persp"
+        }
+        string creator = "omni.kit.converter.hoops_core 511.3.2 hoops_cad_converter 10.6.1+v10-6-1.4099.e46ada55.gl"
+        dictionary omni_layer = {
+            string authoring_layer = "./BX200L-C001.usd"
+        }
+        dictionary renderSettings = {
+        }
+    }
+    defaultPrim = "World"
+    doc = """Generated from Composed Stage of root layer /home/sybae/Desktop/BX200/BX200L-C001.usd
+"""
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    subLayers = [
+        @./physics.usda@
+    ]
+    upAxis = "Z"
+)
+
+over "World" (
+    prepend apiSchemas = ["PhysxArticulationAPI"]
+)
+{
+    bool physxArticulation:enabledSelfCollisions = 0
+
+    over "link0" (
+        prepend apiSchemas = ["PhysxRigidBodyAPI"]
+    )
+    {
+    }
+
+    over "link1" (
+        prepend apiSchemas = ["PhysxRigidBodyAPI"]
+    )
+    {
+    }
+
+    over "link2" (
+        prepend apiSchemas = ["PhysxRigidBodyAPI"]
+    )
+    {
+    }
+
+    over "link3" (
+        prepend apiSchemas = ["PhysxRigidBodyAPI"]
+    )
+    {
+    }
+
+    over "link4" (
+        prepend apiSchemas = ["PhysxRigidBodyAPI"]
+    )
+    {
+    }
+
+    over "link5" (
+        prepend apiSchemas = ["PhysxRigidBodyAPI"]
+    )
+    {
+    }
+
+    over "link6" (
+        prepend apiSchemas = ["PhysxRigidBodyAPI"]
+    )
+    {
+    }
+
+    over "Joints"
+    {
+        over "joint1" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            float physxJoint:maxJointVelocity = 105
+        }
+
+        over "joint2" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            float physxJoint:maxJointVelocity = 90
+        }
+
+        over "joint3" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            float physxJoint:maxJointVelocity = 100
+        }
+
+        over "joint4" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            float physxJoint:maxJointVelocity = 120
+        }
+
+        over "joint5" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            float physxJoint:maxJointVelocity = 120
+        }
+
+        over "joint6" (
+            prepend apiSchemas = ["PhysxJointAPI"]
+        )
+        {
+            float physxJoint:maxJointVelocity = 200
+        }
+    }
+}
+

@@ -1,0 +1,183 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary cameraSettings = {
+            dictionary Front = {
+                double3 position = (5, 0, 0)
+                double radius = 5
+            }
+            dictionary Perspective = {
+                double3 position = (4.6487688646747065, 1.972168203095198, 1.5369785807068228)
+                double3 target = (-4.268211665007667, -1.2356603929644114, 1.31287287863916)
+            }
+            dictionary Right = {
+                double3 position = (0, -5, 0)
+                double radius = 5
+            }
+            dictionary Top = {
+                double3 position = (0, 0, 5)
+                double radius = 5
+            }
+            string boundCamera = "/OmniverseKit_Persp"
+        }
+        string creator = "omni.kit.converter.hoops_core 511.3.2 hoops_cad_converter 10.6.1+v10-6-1.4099.e46ada55.gl"
+        dictionary omni_layer = {
+            string authoring_layer = "./BX200L-C001.usd"
+        }
+        dictionary renderSettings = {
+        }
+    }
+    doc = """Generated from Composed Stage of root layer /home/sybae/Desktop/BX200/BX200L-C001.usd
+"""
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+over "World"
+{
+    over "link0"
+    {
+        over "Visuals"
+        {
+        }
+
+        over "Colliders"
+        {
+        }
+    }
+
+    over "Joints"
+    {
+        over "joint1" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+        )
+        {
+        }
+
+        over "joint2" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+        )
+        {
+        }
+
+        over "joint3" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+        )
+        {
+        }
+
+        over "joint4" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+        )
+        {
+        }
+
+        over "joint5" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+        )
+        {
+        }
+
+        over "joint6" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+        )
+        {
+        }
+    }
+
+    over "root_joint"
+    {
+    }
+
+    over "link1"
+    {
+        over "Visuals"
+        {
+        }
+
+        over "Colliders"
+        {
+        }
+    }
+
+    over "link2"
+    {
+        over "Visuals"
+        {
+        }
+
+        over "Colliders"
+        {
+        }
+    }
+
+    over "link3"
+    {
+        over "Visuals"
+        {
+        }
+
+        over "Colliders"
+        {
+        }
+    }
+
+    over "link4"
+    {
+        over "Visuals"
+        {
+        }
+
+        over "Colliders"
+        {
+        }
+    }
+
+    over "link5"
+    {
+        over "Visuals"
+        {
+        }
+
+        over "Colliders"
+        {
+        }
+    }
+
+    over "link6"
+    {
+        over "Visuals"
+        {
+        }
+
+        over "Colliders"
+        {
+        }
+    }
+}
+
+over "Render"
+{
+    over "OmniverseKit"
+    {
+        over "HydraTextures"
+        {
+            over "omni_kit_widget_viewport_ViewportTexture_0"
+            {
+            }
+        }
+    }
+
+    over "OmniverseGlobalRenderSettings"
+    {
+    }
+
+    over "Vars"
+    {
+        over "LdrColor"
+        {
+        }
+    }
+}
+

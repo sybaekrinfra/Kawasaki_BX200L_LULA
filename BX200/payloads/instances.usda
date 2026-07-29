@@ -1,0 +1,264 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary cameraSettings = {
+            dictionary Front = {
+                double3 position = (5, 0, 0)
+                double radius = 5
+            }
+            dictionary Perspective = {
+                double3 position = (4.6487688646747065, 1.972168203095198, 1.5369785807068228)
+                double3 target = (-4.268211665007667, -1.2356603929644114, 1.31287287863916)
+            }
+            dictionary Right = {
+                double3 position = (0, -5, 0)
+                double radius = 5
+            }
+            dictionary Top = {
+                double3 position = (0, 0, 5)
+                double radius = 5
+            }
+            string boundCamera = "/OmniverseKit_Persp"
+        }
+        string creator = "omni.kit.converter.hoops_core 511.3.2 hoops_cad_converter 10.6.1+v10-6-1.4099.e46ada55.gl"
+        dictionary omni_layer = {
+            string authoring_layer = "./BX200L-C001.usd"
+        }
+        dictionary renderSettings = {
+        }
+    }
+    doc = """Generated from Composed Stage of root layer /home/sybae/Desktop/BX200/BX200L-C001.usd
+"""
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Scope "Instances"
+{
+    def Xform "Visuals" (
+        prepend references = @./geometries.usd@</Geometries/Visuals>
+    )
+    {
+        over "Visuals" (
+            apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            custom color3f omni:hoops:material:diffuseColor = (0.7529412, 0.7529412, 0.7529412)
+            custom string omni:hoops:material:name = "Diffuse"
+            custom float omni:hoops:material:opacity = 1
+            token purpose = "default"
+            token visibility = "inherited"
+        }
+    }
+
+    def Xform "Visuals_1" (
+        prepend references = @./geometries.usd@</Geometries/Visuals>
+    )
+    {
+        over "Visuals" (
+            apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxTriangleMeshCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI", "PhysxConvexHullCollisionAPI"]
+        )
+        {
+            custom color3f omni:hoops:material:diffuseColor = (0.7529412, 0.7529412, 0.7529412)
+            custom string omni:hoops:material:name = "Diffuse"
+            custom float omni:hoops:material:opacity = 1
+            token physics:approximation = "convexDecomposition"
+            bool physics:collisionEnabled = 1
+            token purpose = "guide"
+        }
+    }
+
+    def Xform "Visuals_1_1" (
+        prepend references = @./geometries.usd@</Geometries/Visuals_1>
+    )
+    {
+        over "Visuals_1" (
+            apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            custom color3f omni:hoops:material:diffuseColor = (0.7529412, 0.7529412, 0.7529412)
+            custom string omni:hoops:material:name = "Diffuse"
+            custom float omni:hoops:material:opacity = 1
+            token purpose = "default"
+        }
+    }
+
+    def Xform "Visuals_1_2" (
+        prepend references = @./geometries.usd@</Geometries/Visuals_1>
+    )
+    {
+        over "Visuals_1" (
+            apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxTriangleMeshCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI", "PhysxConvexHullCollisionAPI"]
+        )
+        {
+            custom color3f omni:hoops:material:diffuseColor = (0.7529412, 0.7529412, 0.7529412)
+            custom string omni:hoops:material:name = "Diffuse"
+            custom float omni:hoops:material:opacity = 1
+            token physics:approximation = "convexDecomposition"
+            bool physics:collisionEnabled = 1
+            token purpose = "guide"
+        }
+    }
+
+    def Xform "Visuals_2" (
+        prepend references = @./geometries.usd@</Geometries/Visuals_2>
+    )
+    {
+        over "Visuals_2" (
+            apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            custom color3f omni:hoops:material:diffuseColor = (0.7529412, 0.7529412, 0.7529412)
+            custom string omni:hoops:material:name = "Diffuse"
+            custom float omni:hoops:material:opacity = 1
+            token purpose = "default"
+        }
+    }
+
+    def Xform "Visuals_2_1" (
+        prepend references = @./geometries.usd@</Geometries/Visuals_2>
+    )
+    {
+        over "Visuals_2" (
+            apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxTriangleMeshCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI", "PhysxConvexHullCollisionAPI"]
+        )
+        {
+            custom color3f omni:hoops:material:diffuseColor = (0.7529412, 0.7529412, 0.7529412)
+            custom string omni:hoops:material:name = "Diffuse"
+            custom float omni:hoops:material:opacity = 1
+            token physics:approximation = "convexDecomposition"
+            bool physics:collisionEnabled = 1
+            token purpose = "guide"
+        }
+    }
+
+    def Xform "Visuals_3" (
+        prepend references = @./geometries.usd@</Geometries/Visuals_3>
+    )
+    {
+        over "Visuals_3" (
+            apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            custom color3f omni:hoops:material:diffuseColor = (0.7529412, 0.7529412, 0.7529412)
+            custom string omni:hoops:material:name = "Diffuse"
+            custom float omni:hoops:material:opacity = 1
+            token purpose = "default"
+        }
+    }
+
+    def Xform "Visuals_3_1" (
+        prepend references = @./geometries.usd@</Geometries/Visuals_3>
+    )
+    {
+        over "Visuals_3" (
+            apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxTriangleMeshCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI", "PhysxConvexHullCollisionAPI"]
+        )
+        {
+            custom color3f omni:hoops:material:diffuseColor = (0.7529412, 0.7529412, 0.7529412)
+            custom string omni:hoops:material:name = "Diffuse"
+            custom float omni:hoops:material:opacity = 1
+            token physics:approximation = "convexDecomposition"
+            bool physics:collisionEnabled = 1
+            token purpose = "guide"
+        }
+    }
+
+    def Xform "Visuals_4" (
+        prepend references = @./geometries.usd@</Geometries/Visuals_4>
+    )
+    {
+        over "Visuals_4" (
+            apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            custom color3f omni:hoops:material:diffuseColor = (0.7529412, 0.7529412, 0.7529412)
+            custom string omni:hoops:material:name = "Diffuse"
+            custom float omni:hoops:material:opacity = 1
+            token purpose = "default"
+        }
+    }
+
+    def Xform "Visuals_4_1" (
+        prepend references = @./geometries.usd@</Geometries/Visuals_4>
+    )
+    {
+        over "Visuals_4" (
+            apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxTriangleMeshCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI", "PhysxConvexHullCollisionAPI"]
+        )
+        {
+            custom color3f omni:hoops:material:diffuseColor = (0.7529412, 0.7529412, 0.7529412)
+            custom string omni:hoops:material:name = "Diffuse"
+            custom float omni:hoops:material:opacity = 1
+            token physics:approximation = "convexDecomposition"
+            bool physics:collisionEnabled = 1
+            token purpose = "guide"
+        }
+    }
+
+    def Xform "Visuals_5" (
+        prepend references = @./geometries.usd@</Geometries/Visuals_5>
+    )
+    {
+        over "Visuals_5" (
+            apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            custom color3f omni:hoops:material:diffuseColor = (0.7529412, 0.7529412, 0.7529412)
+            custom string omni:hoops:material:name = "Diffuse"
+            custom float omni:hoops:material:opacity = 1
+            token purpose = "default"
+        }
+    }
+
+    def Xform "Visuals_5_1" (
+        prepend references = @./geometries.usd@</Geometries/Visuals_5>
+    )
+    {
+        over "Visuals_5" (
+            apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxTriangleMeshCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI", "PhysxConvexHullCollisionAPI"]
+        )
+        {
+            custom color3f omni:hoops:material:diffuseColor = (0.7529412, 0.7529412, 0.7529412)
+            custom string omni:hoops:material:name = "Diffuse"
+            custom float omni:hoops:material:opacity = 1
+            token physics:approximation = "convexDecomposition"
+            bool physics:collisionEnabled = 1
+            token purpose = "guide"
+        }
+    }
+
+    def Xform "Visuals_6" (
+        prepend references = @./geometries.usd@</Geometries/Visuals_6>
+    )
+    {
+        over "Visuals_6" (
+            apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            custom color3f omni:hoops:material:diffuseColor = (0.7529412, 0.7529412, 0.7529412)
+            custom string omni:hoops:material:name = "Diffuse"
+            custom float omni:hoops:material:opacity = 1
+            token purpose = "default"
+        }
+    }
+
+    def Xform "Visuals_6_1" (
+        prepend references = @./geometries.usd@</Geometries/Visuals_6>
+    )
+    {
+        over "Visuals_6" (
+            apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxTriangleMeshCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxConvexDecompositionCollisionAPI", "PhysxConvexHullCollisionAPI"]
+        )
+        {
+            custom color3f omni:hoops:material:diffuseColor = (0.7529412, 0.7529412, 0.7529412)
+            custom string omni:hoops:material:name = "Diffuse"
+            custom float omni:hoops:material:opacity = 1
+            token physics:approximation = "convexDecomposition"
+            bool physics:collisionEnabled = 1
+            token purpose = "guide"
+        }
+    }
+}
+

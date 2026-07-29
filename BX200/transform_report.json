@@ -1,0 +1,1385 @@
+{
+  "profile": {
+    "profile_name": "Isaac Sim Structure",
+    "version": "1.0",
+    "rules": [
+      {
+        "name": "Route Variants",
+        "type": "isaacsim.asset.transformer.rules.structure.variants.VariantRoutingRule",
+        "destination": "payloads",
+        "params": {
+          "excluded_variants": [
+            "none",
+            "default",
+            "physx"
+          ]
+        },
+        "enabled": true
+      },
+      {
+        "name": "Flatten Base",
+        "type": "isaacsim.asset.transformer.rules.structure.flatten.FlattenRule",
+        "destination": "payloads",
+        "params": {
+          "output_path": "base.usd",
+          "selected_variants": {
+            "Physics": "PhysX",
+            "Robot": "Robot",
+            "Gripper": "None",
+            "Left_Hand": "None",
+            "Right_Hand": "None"
+          },
+          "clear_variants": false,
+          "case_insensitive": true
+        },
+        "enabled": true
+      },
+      {
+        "name": "Apply Joint State APIs",
+        "type": "isaacsim.asset.transformer.rules.isaac_sim.joint_state_api.JointStateAPIRule",
+        "destination": "payloads",
+        "params": {},
+        "enabled": true
+      },
+      {
+        "name": "Route Isaac Robot Schemas",
+        "type": "isaacsim.asset.transformer.rules.core.schemas.SchemaRoutingRule",
+        "destination": "payloads",
+        "params": {
+          "stage_name": "robot.usda",
+          "schemas": [
+            "IsaacRobotAPI",
+            "IsaacLinkAPI",
+            "IsaacReferencePointAPI",
+            "IsaacJointAPI",
+            "IsaacSurfaceGripper",
+            "IsaacAttachmentPointAPI",
+            "IsaacSiteAPI"
+          ]
+        },
+        "enabled": true
+      },
+      {
+        "name": "Route Isaac Robot Properties",
+        "type": "isaacsim.asset.transformer.rules.core.properties.PropertyRoutingRule",
+        "destination": "payloads",
+        "params": {
+          "stage_name": "robot.usda",
+          "prim_types": [
+            "Isaac.*",
+            "isaac.*"
+          ]
+        },
+        "enabled": true
+      },
+      {
+        "name": "Route Geometries",
+        "type": "isaacsim.asset.transformer.rules.perf.geometries.GeometriesRoutingRule",
+        "destination": "payloads",
+        "params": {
+          "geometries_layer": "geometries.usd",
+          "instance_layer": "instances.usda",
+          "deduplicate": true
+        },
+        "enabled": true
+      },
+      {
+        "name": "Fix Physics Joint Poses",
+        "type": "isaacsim.asset.transformer.rules.isaac_sim.physics_joint_pose_fix.PhysicsJointPoseFixRule",
+        "destination": "payloads",
+        "params": {},
+        "enabled": true
+      },
+      {
+        "name": "Route Materials",
+        "type": "isaacsim.asset.transformer.rules.perf.materials.MaterialsRoutingRule",
+        "destination": "payloads",
+        "params": {
+          "materials_layer": "materials.usda",
+          "assets_folder": "Textures",
+          "download_textures": true
+        },
+        "enabled": true
+      },
+      {
+        "name": "Route PhysX Schemas",
+        "type": "isaacsim.asset.transformer.rules.core.schemas.SchemaRoutingRule",
+        "destination": "payloads/Physics",
+        "params": {
+          "stage_name": "physx.usda",
+          "schemas": [
+            "Physx.*",
+            "physx.*"
+          ]
+        },
+        "enabled": true
+      },
+      {
+        "name": "Route PhysX Prims",
+        "type": "isaacsim.asset.transformer.rules.core.prims.PrimRoutingRule",
+        "destination": "payloads/Physics",
+        "params": {
+          "stage_name": "physx.usda",
+          "prim_types": [
+            "Physx.*",
+            "physx.*"
+          ]
+        },
+        "enabled": true
+      },
+      {
+        "name": "Route PhysX Properties",
+        "type": "isaacsim.asset.transformer.rules.core.properties.PropertyRoutingRule",
+        "destination": "payloads/Physics",
+        "params": {
+          "stage_name": "physx.usda",
+          "properties": [
+            "Physx.*",
+            "physx.*"
+          ]
+        },
+        "enabled": true
+      },
+      {
+        "name": "Route MuJoCo Schemas",
+        "type": "isaacsim.asset.transformer.rules.core.schemas.SchemaRoutingRule",
+        "destination": "payloads/Physics",
+        "params": {
+          "stage_name": "mujoco.usda",
+          "schemas": [
+            "Mjc.*",
+            "mjc.*"
+          ]
+        },
+        "enabled": true
+      },
+      {
+        "name": "Route MuJoCo Prims",
+        "type": "isaacsim.asset.transformer.rules.core.prims.PrimRoutingRule",
+        "destination": "payloads/Physics",
+        "params": {
+          "stage_name": "mujoco.usda",
+          "prim_types": [
+            "Mjc.*",
+            "mjc.*"
+          ]
+        },
+        "enabled": true
+      },
+      {
+        "name": "Route MuJoCo Properties",
+        "type": "isaacsim.asset.transformer.rules.core.properties.PropertyRoutingRule",
+        "destination": "payloads/Physics",
+        "params": {
+          "stage_name": "mujoco.usda",
+          "properties": [
+            "Mjc.*",
+            "mjc.*"
+          ]
+        },
+        "enabled": true
+      },
+      {
+        "name": "Route Physics Schemas",
+        "type": "isaacsim.asset.transformer.rules.core.schemas.SchemaRoutingRule",
+        "destination": "payloads/Physics",
+        "params": {
+          "stage_name": "physics.usda",
+          "schemas": [
+            "Physics.*",
+            "Newton.*"
+          ],
+          "ignore_schemas": [
+            "PhysicsCollisionAPI"
+          ],
+          "prim_names": [
+            ".*"
+          ],
+          "ignore_prim_names": []
+        },
+        "enabled": true
+      },
+      {
+        "name": "Route Physics Prims",
+        "type": "isaacsim.asset.transformer.rules.core.prims.PrimRoutingRule",
+        "destination": "payloads/Physics",
+        "params": {
+          "stage_name": "physics.usda",
+          "prim_types": [
+            "Physics.*",
+            "Newton.*"
+          ]
+        },
+        "enabled": true
+      },
+      {
+        "name": "Make Robot Schema",
+        "type": "isaacsim.asset.transformer.rules.isaac_sim.robot_schema.RobotSchemaRule",
+        "destination": "payloads",
+        "params": {
+          "prim_path": "",
+          "stage_name": "robot.usda",
+          "add_sites": true,
+          "sites_last": false,
+          "sublayer": "Physics/physics.usda"
+        },
+        "enabled": true
+      },
+      {
+        "name": "Make API Schemas Non-Explicit",
+        "type": "isaacsim.asset.transformer.rules.isaac_sim.make_lists_non_explicit.MakeListsNonExplicitRule",
+        "destination": "payloads",
+        "params": {
+          "metadata_names": [
+            "apiSchemas"
+          ],
+          "property_names": [],
+          "list_op_type": "prepend"
+        },
+        "enabled": true
+      },
+      {
+        "name": "Make Robot Relationship Lists Non-Explicit",
+        "type": "isaacsim.asset.transformer.rules.isaac_sim.make_lists_non_explicit.MakeListsNonExplicitRule",
+        "destination": "payloads",
+        "params": {
+          "metadata_names": [],
+          "property_names": [
+            "isaac:physics:robotLinks",
+            "isaac:physics:robotJoints"
+          ],
+          "list_op_type": "prepend"
+        },
+        "enabled": true
+      },
+      {
+        "name": "Generate Interface",
+        "type": "isaacsim.asset.transformer.rules.structure.interface.InterfaceConnectionRule",
+        "destination": "",
+        "params": {
+          "base_layer": "payloads/base.usda",
+          "base_connection_type": "Reference",
+          "generate_folder_variants": true,
+          "payloads_folder": "payloads",
+          "connections": [
+            {
+              "asset_path": "payloads/Physics/physx.usda",
+              "target_path": "payloads/Physics/physics.usda",
+              "connection_type": "Sublayer"
+            },
+            {
+              "asset_path": "payloads/Physics/mujoco.usda",
+              "target_path": "payloads/Physics/physics.usda",
+              "connection_type": "Sublayer"
+            },
+            {
+              "asset_path": "payloads/base.usda",
+              "target_path": "payloads/robot.usda",
+              "connection_type": "Sublayer"
+            }
+          ],
+          "default_variant_selections": {
+            "Physics": "physx",
+            "Gripper": "None",
+            "Left_Hand": "None",
+            "Right_Hand": "None"
+          }
+        },
+        "enabled": true
+      },
+      {
+        "name": "Delete Physics Drive and Joint State APIs",
+        "type": "isaacsim.asset.transformer.rules.core.remove_schema.RemoveSchemaRule",
+        "destination": "payloads/Physics",
+        "params": {
+          "stage_name": "mujoco.usda",
+          "schema_patterns": [
+            "PhysicsDriveAPI.*",
+            "PhysicsJointStateAPI.*"
+          ],
+          "prim_path_patterns": [
+            ".*"
+          ],
+          "clear_properties": false
+        },
+        "enabled": true
+      },
+      {
+        "name": "Delete Newton Redundant APIs",
+        "type": "isaacsim.asset.transformer.rules.core.remove_schema.RemoveSchemaRule",
+        "destination": "payloads/Physics",
+        "params": {
+          "stage_name": "physx.usda",
+          "schema_patterns": [
+            "NewtonMimicAPI.*",
+            "NewtonArticulationRootAPI.*"
+          ],
+          "prim_path_patterns": [
+            ".*"
+          ],
+          "clear_properties": false
+        },
+        "enabled": false
+      }
+    ],
+    "interface_asset_name": null,
+    "output_package_root": "/home/sybae/Desktop/BX200/BX200/",
+    "flatten_source": false,
+    "base_name": "base.usd"
+  },
+  "input_stage_path": "/home/sybae/Desktop/BX200/BX200L-C001.usd",
+  "package_root": "/home/sybae/Desktop/BX200/BX200/",
+  "started_at": "2026-07-28T05:06:12.345Z",
+  "finished_at": "2026-07-28T05:06:12.906Z",
+  "results": [
+    {
+      "rule": {
+        "name": "Route Variants",
+        "type": "isaacsim.asset.transformer.rules.structure.variants.VariantRoutingRule",
+        "destination": "payloads",
+        "params": {
+          "excluded_variants": [
+            "none",
+            "default",
+            "physx"
+          ]
+        },
+        "enabled": true
+      },
+      "success": true,
+      "log": [
+        {
+          "message": "VariantRoutingRule start destination=payloads, case_insensitive=True, collect_dependencies=True, excluded_variants={'none', 'default', 'physx'}"
+        },
+        {
+          "message": "Processing default prim: /World"
+        },
+        {
+          "message": "No variant sets found on default prim"
+        }
+      ],
+      "affected_stages": [],
+      "error": null,
+      "started_at": "2026-07-28T05:06:12.367Z",
+      "finished_at": "2026-07-28T05:06:12.367Z"
+    },
+    {
+      "rule": {
+        "name": "Flatten Base",
+        "type": "isaacsim.asset.transformer.rules.structure.flatten.FlattenRule",
+        "destination": "payloads",
+        "params": {
+          "output_path": "base.usd",
+          "selected_variants": {
+            "Physics": "PhysX",
+            "Robot": "Robot",
+            "Gripper": "None",
+            "Left_Hand": "None",
+            "Right_Hand": "None"
+          },
+          "clear_variants": false,
+          "case_insensitive": true
+        },
+        "enabled": true
+      },
+      "success": true,
+      "log": [
+        {
+          "message": "FlattenRule start input=/home/sybae/Desktop/BX200/BX200L-C001.usd output=base.usd clear_variants=False selected_variants={'Physics': 'PhysX', 'Robot': 'Robot', 'Gripper': 'None', 'Left_Hand': 'None', 'Right_Hand': 'None'} case_insensitive=True"
+        },
+        {
+          "message": "Variant set 'Physics' not found on default prim, skipping"
+        },
+        {
+          "message": "Variant set 'Robot' not found on default prim, skipping"
+        },
+        {
+          "message": "Variant set 'Gripper' not found on default prim, skipping"
+        },
+        {
+          "message": "Variant set 'Left_Hand' not found on default prim, skipping"
+        },
+        {
+          "message": "Variant set 'Right_Hand' not found on default prim, skipping"
+        },
+        {
+          "message": "No variant selections applied"
+        },
+        {
+          "message": "Layer cached in USD registry, transferring content: /home/sybae/Desktop/BX200/BX200/payloads/base.usd"
+        },
+        {
+          "message": "Exported flattened layer to: /home/sybae/Desktop/BX200/BX200/payloads/base.usd"
+        },
+        {
+          "message": "FlattenRule completed"
+        }
+      ],
+      "affected_stages": [
+        "base.usd"
+      ],
+      "error": null,
+      "started_at": "2026-07-28T05:06:12.367Z",
+      "finished_at": "2026-07-28T05:06:12.406Z"
+    },
+    {
+      "rule": {
+        "name": "Apply Joint State APIs",
+        "type": "isaacsim.asset.transformer.rules.isaac_sim.joint_state_api.JointStateAPIRule",
+        "destination": "payloads",
+        "params": {},
+        "enabled": true
+      },
+      "success": true,
+      "log": [
+        {
+          "message": "JointStateAPIRule start joints=7"
+        },
+        {
+          "message": "JointStateAPIRule applied 'angular' on /World/Joints/joint1"
+        },
+        {
+          "message": "JointStateAPIRule applied 'angular' on /World/Joints/joint2"
+        },
+        {
+          "message": "JointStateAPIRule applied 'angular' on /World/Joints/joint3"
+        },
+        {
+          "message": "JointStateAPIRule applied 'angular' on /World/Joints/joint4"
+        },
+        {
+          "message": "JointStateAPIRule applied 'angular' on /World/Joints/joint5"
+        },
+        {
+          "message": "JointStateAPIRule applied 'angular' on /World/Joints/joint6"
+        },
+        {
+          "message": "JointStateAPIRule completed: 6 applied, 1 skipped"
+        }
+      ],
+      "affected_stages": [
+        "/home/sybae/Desktop/BX200/BX200/payloads/base.usd"
+      ],
+      "error": null,
+      "started_at": "2026-07-28T05:06:12.406Z",
+      "finished_at": "2026-07-28T05:06:12.407Z"
+    },
+    {
+      "rule": {
+        "name": "Route Isaac Robot Schemas",
+        "type": "isaacsim.asset.transformer.rules.core.schemas.SchemaRoutingRule",
+        "destination": "payloads",
+        "params": {
+          "stage_name": "robot.usda",
+          "schemas": [
+            "IsaacRobotAPI",
+            "IsaacLinkAPI",
+            "IsaacReferencePointAPI",
+            "IsaacJointAPI",
+            "IsaacSurfaceGripper",
+            "IsaacAttachmentPointAPI",
+            "IsaacSiteAPI"
+          ]
+        },
+        "enabled": true
+      },
+      "success": true,
+      "log": [
+        {
+          "message": "SchemaRoutingRule start destination=payloads/robot.usda"
+        },
+        {
+          "message": "Schema patterns: IsaacRobotAPI, IsaacLinkAPI, IsaacReferencePointAPI, IsaacJointAPI, IsaacSurfaceGripper, IsaacAttachmentPointAPI, IsaacSiteAPI"
+        },
+        {
+          "message": "Prim name patterns: .*"
+        },
+        {
+          "message": "No matching schemas found, skipping output file creation"
+        }
+      ],
+      "affected_stages": [],
+      "error": null,
+      "started_at": "2026-07-28T05:06:12.407Z",
+      "finished_at": "2026-07-28T05:06:12.408Z"
+    },
+    {
+      "rule": {
+        "name": "Route Isaac Robot Properties",
+        "type": "isaacsim.asset.transformer.rules.core.properties.PropertyRoutingRule",
+        "destination": "payloads",
+        "params": {
+          "stage_name": "robot.usda",
+          "prim_types": [
+            "Isaac.*",
+            "isaac.*"
+          ]
+        },
+        "enabled": true
+      },
+      "success": true,
+      "log": [
+        {
+          "message": "No property patterns specified, skipping"
+        }
+      ],
+      "affected_stages": [],
+      "error": null,
+      "started_at": "2026-07-28T05:06:12.408Z",
+      "finished_at": "2026-07-28T05:06:12.408Z"
+    },
+    {
+      "rule": {
+        "name": "Route Geometries",
+        "type": "isaacsim.asset.transformer.rules.perf.geometries.GeometriesRoutingRule",
+        "destination": "payloads",
+        "params": {
+          "geometries_layer": "geometries.usd",
+          "instance_layer": "instances.usda",
+          "deduplicate": true
+        },
+        "enabled": true
+      },
+      "success": true,
+      "log": [
+        {
+          "message": "Pre-processing: making all instanceable references non-instanceable"
+        },
+        {
+          "message": "Pre-processing: done"
+        },
+        {
+          "message": "GeometriesRoutingRule start scope=/ deduplicate=True geometries_layer=payloads/geometries.usd instance_layer=payloads/instances.usda"
+        },
+        {
+          "message": "Found 14 geometry prim usages"
+        },
+        {
+          "message": "Geometry sources: ['/World/link0/Visuals', '/World/link0/Colliders', '/World/link1/Visuals', '/World/link1/Colliders', '/World/link2/Visuals', '/World/link2/Colliders', '/World/link3/Visuals', '/World/link3/Colliders', '/World/link4/Visuals', '/World/link4/Colliders', '/World/link5/Visuals', '/World/link5/Colliders', '/World/link6/Visuals', '/World/link6/Colliders']"
+        },
+        {
+          "message": "Created new geometries layer: /home/sybae/Desktop/BX200/BX200/payloads/geometries.usd"
+        },
+        {
+          "message": "Created new instances layer: /home/sybae/Desktop/BX200/BX200/payloads/instances.usda"
+        },
+        {
+          "message": "Copied geometry /World/link0/Visuals to /Geometries/Visuals/Visuals"
+        },
+        {
+          "message": "Copied geometry /World/link1/Visuals to /Geometries/Visuals_1/Visuals_1"
+        },
+        {
+          "message": "Copied geometry /World/link2/Visuals to /Geometries/Visuals_2/Visuals_2"
+        },
+        {
+          "message": "Copied geometry /World/link3/Visuals to /Geometries/Visuals_3/Visuals_3"
+        },
+        {
+          "message": "Copied geometry /World/link4/Visuals to /Geometries/Visuals_4/Visuals_4"
+        },
+        {
+          "message": "Copied geometry /World/link5/Visuals to /Geometries/Visuals_5/Visuals_5"
+        },
+        {
+          "message": "Copied geometry /World/link6/Visuals to /Geometries/Visuals_6/Visuals_6"
+        },
+        {
+          "message": "Processed 14 geometry usages: 7 new, 0 reused from existing layer, 7 deduplicated within batch"
+        },
+        {
+          "message": "Propagated effective purpose=guide from ancestors of /World/link0/Colliders to prototype mesh /Instances/Visuals_1/Visuals"
+        },
+        {
+          "message": "Propagated effective purpose=guide from ancestors of /World/link1/Colliders to prototype mesh /Instances/Visuals_1_2/Visuals_1"
+        },
+        {
+          "message": "Propagated effective purpose=guide from ancestors of /World/link2/Colliders to prototype mesh /Instances/Visuals_2_1/Visuals_2"
+        },
+        {
+          "message": "Propagated effective purpose=guide from ancestors of /World/link3/Colliders to prototype mesh /Instances/Visuals_3_1/Visuals_3"
+        },
+        {
+          "message": "Propagated effective purpose=guide from ancestors of /World/link4/Colliders to prototype mesh /Instances/Visuals_4_1/Visuals_4"
+        },
+        {
+          "message": "Propagated effective purpose=guide from ancestors of /World/link5/Colliders to prototype mesh /Instances/Visuals_5_1/Visuals_5"
+        },
+        {
+          "message": "Propagated effective purpose=guide from ancestors of /World/link6/Colliders to prototype mesh /Instances/Visuals_6_1/Visuals_6"
+        },
+        {
+          "message": "Created 14 unique instance definitions (0 deduplicated from 14 sources)"
+        },
+        {
+          "message": "Reference path: /home/sybae/Desktop/BX200/BX200/payloads/base.usd -> ./instances.usda"
+        },
+        {
+          "message": "Updated 14 prims in source stage with instanceable references"
+        },
+        {
+          "message": "GeometriesRoutingRule completed: 7 unique geometries (7 new, 0 pre-existing), 14 unique instances (0 deduplicated)"
+        }
+      ],
+      "affected_stages": [
+        "/home/sybae/Desktop/BX200/BX200/payloads/base.usda",
+        "payloads/geometries.usd",
+        "payloads/instances.usda"
+      ],
+      "error": null,
+      "started_at": "2026-07-28T05:06:12.408Z",
+      "finished_at": "2026-07-28T05:06:12.857Z"
+    },
+    {
+      "rule": {
+        "name": "Fix Physics Joint Poses",
+        "type": "isaacsim.asset.transformer.rules.isaac_sim.physics_joint_pose_fix.PhysicsJointPoseFixRule",
+        "destination": "payloads",
+        "params": {},
+        "enabled": true
+      },
+      "success": true,
+      "log": [
+        {
+          "message": "PhysicsJointPoseFixRule start original=/home/sybae/Desktop/BX200/BX200L-C001.usd joints=7 tol_pos=1e-06 tol_orient=1e-06"
+        },
+        {
+          "message": "PhysicsJointPoseFixRule completed: 0 joint body pose(s) corrected"
+        }
+      ],
+      "affected_stages": [],
+      "error": null,
+      "started_at": "2026-07-28T05:06:12.857Z",
+      "finished_at": "2026-07-28T05:06:12.859Z"
+    },
+    {
+      "rule": {
+        "name": "Route Materials",
+        "type": "isaacsim.asset.transformer.rules.perf.materials.MaterialsRoutingRule",
+        "destination": "payloads",
+        "params": {
+          "materials_layer": "materials.usda",
+          "assets_folder": "Textures",
+          "download_textures": true
+        },
+        "enabled": true
+      },
+      "success": true,
+      "log": [
+        {
+          "message": "MaterialsRoutingRule start scope=/ deduplicate=True materials_layer=payloads/materials.usda textures_folder=Textures download_textures=True"
+        },
+        {
+          "message": "Found 0 material prims"
+        },
+        {
+          "message": "No material prims found, skipping"
+        }
+      ],
+      "affected_stages": [],
+      "error": null,
+      "started_at": "2026-07-28T05:06:12.860Z",
+      "finished_at": "2026-07-28T05:06:12.860Z"
+    },
+    {
+      "rule": {
+        "name": "Route PhysX Schemas",
+        "type": "isaacsim.asset.transformer.rules.core.schemas.SchemaRoutingRule",
+        "destination": "payloads/Physics",
+        "params": {
+          "stage_name": "physx.usda",
+          "schemas": [
+            "Physx.*",
+            "physx.*"
+          ]
+        },
+        "enabled": true
+      },
+      "success": true,
+      "log": [
+        {
+          "message": "SchemaRoutingRule start destination=payloads/Physics/physx.usda"
+        },
+        {
+          "message": "Schema patterns: Physx.*, physx.*"
+        },
+        {
+          "message": "Prim name patterns: .*"
+        },
+        {
+          "message": "Using schemas layer: /home/sybae/Desktop/BX200/BX200/payloads/Physics/physx.usda"
+        },
+        {
+          "message": "Moved 1 schema(s) from /World: PhysxArticulationAPI"
+        },
+        {
+          "message": "Moved 1 schema(s) from /World/link0: PhysxRigidBodyAPI"
+        },
+        {
+          "message": "Moved 1 schema(s) from /World/link1: PhysxRigidBodyAPI"
+        },
+        {
+          "message": "Moved 1 schema(s) from /World/link2: PhysxRigidBodyAPI"
+        },
+        {
+          "message": "Moved 1 schema(s) from /World/link3: PhysxRigidBodyAPI"
+        },
+        {
+          "message": "Moved 1 schema(s) from /World/link4: PhysxRigidBodyAPI"
+        },
+        {
+          "message": "Moved 1 schema(s) from /World/link5: PhysxRigidBodyAPI"
+        },
+        {
+          "message": "Moved 1 schema(s) from /World/link6: PhysxRigidBodyAPI"
+        },
+        {
+          "message": "Moved 1 schema(s) from /World/Joints/joint1: PhysxJointAPI"
+        },
+        {
+          "message": "Moved 1 schema(s) from /World/Joints/joint2: PhysxJointAPI"
+        },
+        {
+          "message": "Moved 1 schema(s) from /World/Joints/joint3: PhysxJointAPI"
+        },
+        {
+          "message": "Moved 1 schema(s) from /World/Joints/joint4: PhysxJointAPI"
+        },
+        {
+          "message": "Moved 1 schema(s) from /World/Joints/joint5: PhysxJointAPI"
+        },
+        {
+          "message": "Moved 1 schema(s) from /World/Joints/joint6: PhysxJointAPI"
+        },
+        {
+          "message": "Processed 14 prim(s), moved 14 schema instance(s)"
+        },
+        {
+          "message": "SchemaRoutingRule completed"
+        }
+      ],
+      "affected_stages": [
+        "payloads/Physics/physx.usda"
+      ],
+      "error": null,
+      "started_at": "2026-07-28T05:06:12.860Z",
+      "finished_at": "2026-07-28T05:06:12.864Z"
+    },
+    {
+      "rule": {
+        "name": "Route PhysX Prims",
+        "type": "isaacsim.asset.transformer.rules.core.prims.PrimRoutingRule",
+        "destination": "payloads/Physics",
+        "params": {
+          "stage_name": "physx.usda",
+          "prim_types": [
+            "Physx.*",
+            "physx.*"
+          ]
+        },
+        "enabled": true
+      },
+      "success": true,
+      "log": [
+        {
+          "message": "PrimRoutingRule start destination=payloads/Physics/physx.usda"
+        },
+        {
+          "message": "Prim type patterns: Physx.*, physx.*"
+        },
+        {
+          "message": "Search scope: /"
+        },
+        {
+          "message": "Prim name patterns: .*"
+        },
+        {
+          "message": "No matching prims found, skipping output file creation"
+        }
+      ],
+      "affected_stages": [],
+      "error": null,
+      "started_at": "2026-07-28T05:06:12.864Z",
+      "finished_at": "2026-07-28T05:06:12.864Z"
+    },
+    {
+      "rule": {
+        "name": "Route PhysX Properties",
+        "type": "isaacsim.asset.transformer.rules.core.properties.PropertyRoutingRule",
+        "destination": "payloads/Physics",
+        "params": {
+          "stage_name": "physx.usda",
+          "properties": [
+            "Physx.*",
+            "physx.*"
+          ]
+        },
+        "enabled": true
+      },
+      "success": true,
+      "log": [
+        {
+          "message": "PropertyRoutingRule start destination=payloads/Physics/physx.usda"
+        },
+        {
+          "message": "Property patterns: Physx.*, physx.*"
+        },
+        {
+          "message": "Search scope: /"
+        },
+        {
+          "message": "Prim name patterns: .*"
+        },
+        {
+          "message": "No matching properties found, skipping output file creation"
+        }
+      ],
+      "affected_stages": [],
+      "error": null,
+      "started_at": "2026-07-28T05:06:12.864Z",
+      "finished_at": "2026-07-28T05:06:12.867Z"
+    },
+    {
+      "rule": {
+        "name": "Route MuJoCo Schemas",
+        "type": "isaacsim.asset.transformer.rules.core.schemas.SchemaRoutingRule",
+        "destination": "payloads/Physics",
+        "params": {
+          "stage_name": "mujoco.usda",
+          "schemas": [
+            "Mjc.*",
+            "mjc.*"
+          ]
+        },
+        "enabled": true
+      },
+      "success": true,
+      "log": [
+        {
+          "message": "SchemaRoutingRule start destination=payloads/Physics/mujoco.usda"
+        },
+        {
+          "message": "Schema patterns: Mjc.*, mjc.*"
+        },
+        {
+          "message": "Prim name patterns: .*"
+        },
+        {
+          "message": "No matching schemas found, skipping output file creation"
+        }
+      ],
+      "affected_stages": [],
+      "error": null,
+      "started_at": "2026-07-28T05:06:12.867Z",
+      "finished_at": "2026-07-28T05:06:12.868Z"
+    },
+    {
+      "rule": {
+        "name": "Route MuJoCo Prims",
+        "type": "isaacsim.asset.transformer.rules.core.prims.PrimRoutingRule",
+        "destination": "payloads/Physics",
+        "params": {
+          "stage_name": "mujoco.usda",
+          "prim_types": [
+            "Mjc.*",
+            "mjc.*"
+          ]
+        },
+        "enabled": true
+      },
+      "success": true,
+      "log": [
+        {
+          "message": "PrimRoutingRule start destination=payloads/Physics/mujoco.usda"
+        },
+        {
+          "message": "Prim type patterns: Mjc.*, mjc.*"
+        },
+        {
+          "message": "Search scope: /"
+        },
+        {
+          "message": "Prim name patterns: .*"
+        },
+        {
+          "message": "No matching prims found, skipping output file creation"
+        }
+      ],
+      "affected_stages": [],
+      "error": null,
+      "started_at": "2026-07-28T05:06:12.868Z",
+      "finished_at": "2026-07-28T05:06:12.868Z"
+    },
+    {
+      "rule": {
+        "name": "Route MuJoCo Properties",
+        "type": "isaacsim.asset.transformer.rules.core.properties.PropertyRoutingRule",
+        "destination": "payloads/Physics",
+        "params": {
+          "stage_name": "mujoco.usda",
+          "properties": [
+            "Mjc.*",
+            "mjc.*"
+          ]
+        },
+        "enabled": true
+      },
+      "success": true,
+      "log": [
+        {
+          "message": "PropertyRoutingRule start destination=payloads/Physics/mujoco.usda"
+        },
+        {
+          "message": "Property patterns: Mjc.*, mjc.*"
+        },
+        {
+          "message": "Search scope: /"
+        },
+        {
+          "message": "Prim name patterns: .*"
+        },
+        {
+          "message": "No matching properties found, skipping output file creation"
+        }
+      ],
+      "affected_stages": [],
+      "error": null,
+      "started_at": "2026-07-28T05:06:12.868Z",
+      "finished_at": "2026-07-28T05:06:12.871Z"
+    },
+    {
+      "rule": {
+        "name": "Route Physics Schemas",
+        "type": "isaacsim.asset.transformer.rules.core.schemas.SchemaRoutingRule",
+        "destination": "payloads/Physics",
+        "params": {
+          "stage_name": "physics.usda",
+          "schemas": [
+            "Physics.*",
+            "Newton.*"
+          ],
+          "ignore_schemas": [
+            "PhysicsCollisionAPI"
+          ],
+          "prim_names": [
+            ".*"
+          ],
+          "ignore_prim_names": []
+        },
+        "enabled": true
+      },
+      "success": true,
+      "log": [
+        {
+          "message": "SchemaRoutingRule start destination=payloads/Physics/physics.usda"
+        },
+        {
+          "message": "Schema patterns: Physics.*, Newton.*"
+        },
+        {
+          "message": "Ignoring schemas: PhysicsCollisionAPI"
+        },
+        {
+          "message": "Prim name patterns: .*"
+        },
+        {
+          "message": "Using schemas layer: /home/sybae/Desktop/BX200/BX200/payloads/Physics/physics.usda"
+        },
+        {
+          "message": "Moved 2 schema(s) from /World: PhysicsArticulationRootAPI, NewtonArticulationRootAPI"
+        },
+        {
+          "message": "Moved 1 schema(s) from /World/link0: PhysicsRigidBodyAPI"
+        },
+        {
+          "message": "Moved 1 schema(s) from /World/link1: PhysicsRigidBodyAPI"
+        },
+        {
+          "message": "Moved 1 schema(s) from /World/link2: PhysicsRigidBodyAPI"
+        },
+        {
+          "message": "Moved 1 schema(s) from /World/link3: PhysicsRigidBodyAPI"
+        },
+        {
+          "message": "Moved 1 schema(s) from /World/link4: PhysicsRigidBodyAPI"
+        },
+        {
+          "message": "Moved 1 schema(s) from /World/link5: PhysicsRigidBodyAPI"
+        },
+        {
+          "message": "Moved 1 schema(s) from /World/link6: PhysicsRigidBodyAPI"
+        },
+        {
+          "message": "Moved 2 schema(s) from /World/Joints/joint1: PhysicsDriveAPI:angular, PhysicsJointStateAPI:angular"
+        },
+        {
+          "message": "Moved 2 schema(s) from /World/Joints/joint2: PhysicsDriveAPI:angular, PhysicsJointStateAPI:angular"
+        },
+        {
+          "message": "Moved 2 schema(s) from /World/Joints/joint3: PhysicsDriveAPI:angular, PhysicsJointStateAPI:angular"
+        },
+        {
+          "message": "Moved 2 schema(s) from /World/Joints/joint4: PhysicsDriveAPI:angular, PhysicsJointStateAPI:angular"
+        },
+        {
+          "message": "Moved 2 schema(s) from /World/Joints/joint5: PhysicsDriveAPI:angular, PhysicsJointStateAPI:angular"
+        },
+        {
+          "message": "Moved 2 schema(s) from /World/Joints/joint6: PhysicsDriveAPI:angular, PhysicsJointStateAPI:angular"
+        },
+        {
+          "message": "Processed 14 prim(s), moved 21 schema instance(s)"
+        },
+        {
+          "message": "SchemaRoutingRule completed"
+        }
+      ],
+      "affected_stages": [
+        "payloads/Physics/physics.usda"
+      ],
+      "error": null,
+      "started_at": "2026-07-28T05:06:12.871Z",
+      "finished_at": "2026-07-28T05:06:12.876Z"
+    },
+    {
+      "rule": {
+        "name": "Route Physics Prims",
+        "type": "isaacsim.asset.transformer.rules.core.prims.PrimRoutingRule",
+        "destination": "payloads/Physics",
+        "params": {
+          "stage_name": "physics.usda",
+          "prim_types": [
+            "Physics.*",
+            "Newton.*"
+          ]
+        },
+        "enabled": true
+      },
+      "success": true,
+      "log": [
+        {
+          "message": "PrimRoutingRule start destination=payloads/Physics/physics.usda"
+        },
+        {
+          "message": "Prim type patterns: Physics.*, Newton.*"
+        },
+        {
+          "message": "Search scope: /"
+        },
+        {
+          "message": "Prim name patterns: .*"
+        },
+        {
+          "message": "Using prims layer: /home/sybae/Desktop/BX200/BX200/payloads/Physics/physics.usda"
+        },
+        {
+          "message": "Processing prim: /World/Joints/joint1 (type: PhysicsRevoluteJoint)"
+        },
+        {
+          "message": "Copied composed prim: /World/Joints/joint1"
+        },
+        {
+          "message": "Removed 1 prim spec(s) from source layers"
+        },
+        {
+          "message": "Processing prim: /World/Joints/joint2 (type: PhysicsRevoluteJoint)"
+        },
+        {
+          "message": "Copied composed prim: /World/Joints/joint2"
+        },
+        {
+          "message": "Removed 1 prim spec(s) from source layers"
+        },
+        {
+          "message": "Processing prim: /World/Joints/joint3 (type: PhysicsRevoluteJoint)"
+        },
+        {
+          "message": "Copied composed prim: /World/Joints/joint3"
+        },
+        {
+          "message": "Removed 1 prim spec(s) from source layers"
+        },
+        {
+          "message": "Processing prim: /World/Joints/joint4 (type: PhysicsRevoluteJoint)"
+        },
+        {
+          "message": "Copied composed prim: /World/Joints/joint4"
+        },
+        {
+          "message": "Removed 1 prim spec(s) from source layers"
+        },
+        {
+          "message": "Processing prim: /World/Joints/joint5 (type: PhysicsRevoluteJoint)"
+        },
+        {
+          "message": "Copied composed prim: /World/Joints/joint5"
+        },
+        {
+          "message": "Removed 1 prim spec(s) from source layers"
+        },
+        {
+          "message": "Processing prim: /World/Joints/joint6 (type: PhysicsRevoluteJoint)"
+        },
+        {
+          "message": "Copied composed prim: /World/Joints/joint6"
+        },
+        {
+          "message": "Removed 1 prim spec(s) from source layers"
+        },
+        {
+          "message": "Processing prim: /World/root_joint (type: PhysicsFixedJoint)"
+        },
+        {
+          "message": "Copied composed prim: /World/root_joint"
+        },
+        {
+          "message": "Removed 1 prim spec(s) from source layers"
+        },
+        {
+          "message": "Saved modified layer: /home/sybae/Desktop/BX200/BX200/payloads/base.usda"
+        },
+        {
+          "message": "Processed 7 prim(s), removed 7 prim spec(s) from source"
+        },
+        {
+          "message": "PrimRoutingRule completed"
+        }
+      ],
+      "affected_stages": [
+        "payloads/Physics/physics.usda"
+      ],
+      "error": null,
+      "started_at": "2026-07-28T05:06:12.876Z",
+      "finished_at": "2026-07-28T05:06:12.884Z"
+    },
+    {
+      "rule": {
+        "name": "Make Robot Schema",
+        "type": "isaacsim.asset.transformer.rules.isaac_sim.robot_schema.RobotSchemaRule",
+        "destination": "payloads",
+        "params": {
+          "prim_path": "",
+          "stage_name": "robot.usda",
+          "add_sites": true,
+          "sites_last": false,
+          "sublayer": "Physics/physics.usda"
+        },
+        "enabled": true
+      },
+      "success": true,
+      "log": [
+        {
+          "message": "RobotSchemaRule start prim=/World destination=payloads/robot.usda add_sites=True sites_last=False"
+        },
+        {
+          "message": "Sublayer not found: /home/sybae/Desktop/BX200/BX200/payloads/payloads"
+        },
+        {
+          "message": "Inserted sublayer: ./Physics/physics.usda"
+        },
+        {
+          "message": "Added robot schema layer as sublayer: ./robot.usda"
+        },
+        {
+          "message": "Applied RobotAPI to target prim"
+        },
+        {
+          "message": "Detected root link: /World/link0"
+        },
+        {
+          "message": "No articulation root joint detected"
+        },
+        {
+          "message": "Discarded root layer changes (editing separate layer)"
+        },
+        {
+          "message": "RobotSchemaRule completed"
+        }
+      ],
+      "affected_stages": [
+        "/home/sybae/Desktop/BX200/BX200/payloads/robot.usda"
+      ],
+      "error": null,
+      "started_at": "2026-07-28T05:06:12.884Z",
+      "finished_at": "2026-07-28T05:06:12.895Z"
+    },
+    {
+      "rule": {
+        "name": "Make API Schemas Non-Explicit",
+        "type": "isaacsim.asset.transformer.rules.isaac_sim.make_lists_non_explicit.MakeListsNonExplicitRule",
+        "destination": "payloads",
+        "params": {
+          "metadata_names": [
+            "apiSchemas"
+          ],
+          "property_names": [],
+          "list_op_type": "prepend"
+        },
+        "enabled": true
+      },
+      "success": true,
+      "log": [
+        {
+          "message": "MakeListsNonExplicitRule start metadata=['apiSchemas'] properties=[] list_op_type=prepend"
+        },
+        {
+          "message": "Converted metadata 'apiSchemas' on /Render/OmniverseKit/HydraTextures/omni_kit_widget_viewport_ViewportTexture_0 (14 item(s))"
+        },
+        {
+          "message": "Converted metadata 'apiSchemas' on /Render/OmniverseGlobalRenderSettings (2 item(s))"
+        },
+        {
+          "message": "Saved modified layer: /home/sybae/Desktop/BX200/BX200/payloads/base.usda"
+        },
+        {
+          "message": "MakeListsNonExplicitRule completed: metadata=2, properties=0"
+        }
+      ],
+      "affected_stages": [
+        "/home/sybae/Desktop/BX200/BX200/payloads/base.usda"
+      ],
+      "error": null,
+      "started_at": "2026-07-28T05:06:12.895Z",
+      "finished_at": "2026-07-28T05:06:12.896Z"
+    },
+    {
+      "rule": {
+        "name": "Make Robot Relationship Lists Non-Explicit",
+        "type": "isaacsim.asset.transformer.rules.isaac_sim.make_lists_non_explicit.MakeListsNonExplicitRule",
+        "destination": "payloads",
+        "params": {
+          "metadata_names": [],
+          "property_names": [
+            "isaac:physics:robotLinks",
+            "isaac:physics:robotJoints"
+          ],
+          "list_op_type": "prepend"
+        },
+        "enabled": true
+      },
+      "success": true,
+      "log": [
+        {
+          "message": "MakeListsNonExplicitRule start metadata=[] properties=['isaac:physics:robotLinks', 'isaac:physics:robotJoints'] list_op_type=prepend"
+        },
+        {
+          "message": "MakeListsNonExplicitRule completed: metadata=0, properties=0"
+        }
+      ],
+      "affected_stages": [],
+      "error": null,
+      "started_at": "2026-07-28T05:06:12.896Z",
+      "finished_at": "2026-07-28T05:06:12.897Z"
+    },
+    {
+      "rule": {
+        "name": "Generate Interface",
+        "type": "isaacsim.asset.transformer.rules.structure.interface.InterfaceConnectionRule",
+        "destination": "",
+        "params": {
+          "base_layer": "payloads/base.usda",
+          "base_connection_type": "Reference",
+          "generate_folder_variants": true,
+          "payloads_folder": "payloads",
+          "connections": [
+            {
+              "asset_path": "payloads/Physics/physx.usda",
+              "target_path": "payloads/Physics/physics.usda",
+              "connection_type": "Sublayer"
+            },
+            {
+              "asset_path": "payloads/Physics/mujoco.usda",
+              "target_path": "payloads/Physics/physics.usda",
+              "connection_type": "Sublayer"
+            },
+            {
+              "asset_path": "payloads/base.usda",
+              "target_path": "payloads/robot.usda",
+              "connection_type": "Sublayer"
+            }
+          ],
+          "default_variant_selections": {
+            "Physics": "physx",
+            "Gripper": "None",
+            "Left_Hand": "None",
+            "Right_Hand": "None"
+          }
+        },
+        "enabled": true
+      },
+      "success": true,
+      "log": [
+        {
+          "message": "InterfaceConnectionRule start interface=BX200L-C001.usda base_connection=Reference folder_variants=True"
+        },
+        {
+          "message": "Created/opened interface layer with stage metadata"
+        },
+        {
+          "message": "Connected base layer via Reference: ./payloads/base.usda"
+        },
+        {
+          "message": "Created variant set 'Physics' with 2 variants + None"
+        },
+        {
+          "message": "Added connection: payloads/Physics/physics.usda -> payloads/Physics/physx.usda via Sublayer"
+        },
+        {
+          "message": "Asset layer not found: payloads/Physics/mujoco.usda, skipping connection"
+        },
+        {
+          "message": "Added connection: payloads/robot.usda -> payloads/base.usda via Sublayer"
+        },
+        {
+          "message": "Recovered 5 root-level prim(s) from base layer into interface: ['Render', 'OmniverseKit_Persp', 'OmniverseKit_Front', 'OmniverseKit_Right', 'OmniverseKit_Top']"
+        },
+        {
+          "message": "InterfaceConnectionRule completed: /home/sybae/Desktop/BX200/BX200/BX200L-C001.usda"
+        }
+      ],
+      "affected_stages": [
+        "/home/sybae/Desktop/BX200/BX200/payloads/Physics/physx.usda",
+        "/home/sybae/Desktop/BX200/BX200/payloads/base.usda",
+        "/home/sybae/Desktop/BX200/BX200/BX200L-C001.usda"
+      ],
+      "error": null,
+      "started_at": "2026-07-28T05:06:12.897Z",
+      "finished_at": "2026-07-28T05:06:12.904Z"
+    },
+    {
+      "rule": {
+        "name": "Delete Physics Drive and Joint State APIs",
+        "type": "isaacsim.asset.transformer.rules.core.remove_schema.RemoveSchemaRule",
+        "destination": "payloads/Physics",
+        "params": {
+          "stage_name": "mujoco.usda",
+          "schema_patterns": [
+            "PhysicsDriveAPI.*",
+            "PhysicsJointStateAPI.*"
+          ],
+          "prim_path_patterns": [
+            ".*"
+          ],
+          "clear_properties": false
+        },
+        "enabled": true
+      },
+      "success": true,
+      "log": [
+        {
+          "message": "RemoveSchemaRule start destination=payloads/Physics/mujoco.usda schemas=2 properties=0"
+        },
+        {
+          "message": "RemoveSchemaRule completed"
+        }
+      ],
+      "affected_stages": [
+        "payloads/Physics/mujoco.usda"
+      ],
+      "error": null,
+      "started_at": "2026-07-28T05:06:12.904Z",
+      "finished_at": "2026-07-28T05:06:12.906Z"
+    }
+  ],
+  "output_stage_path": "/home/sybae/Desktop/BX200/BX200/BX200L-C001.usda"
+}
